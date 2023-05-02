@@ -75,6 +75,33 @@
                     </layers>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>io.fabric8</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <version>0.42.1</version>
+                <configuration>
+                    <verbose>true</verbose>
+                    <images>
+                        <image>
+                            <name>sadatmalik/spring-6-auth-server</name>
+                            <build>
+                                <assembly>
+                                    <descriptorRef>artifact</descriptorRef>
+                                </assembly>
+                                <dockerFile>Dockerfile</dockerFile>
+                                <tags>
+                                    <tag>latest</tag>
+                                    <tag>${project.version}</tag>
+                                </tags>
+                            </build>
+                        </image>
+                    </images>
+                    <authConfig>
+                        <username>sadatmalik</username>
+                        <password>docker-hub-password-here</password>
+                    </authConfig>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 
